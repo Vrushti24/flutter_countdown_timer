@@ -14,8 +14,11 @@ button(TimeValue timer) {
       width: mq.width * .25,
       height: mq.height * .075,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(width: 2),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          width: 2,
+          color: Color(0xFF000515),
+        ),
       ),
       child: MaterialButton(
         onPressed: () {
@@ -27,7 +30,19 @@ button(TimeValue timer) {
             timeController.startCountdown(timer);
           }
         },
-        child: Obx(() => Text(timer.isRunning.value ? 'Pause' : 'Start')),
+        color: Color(0xFF000515),
+        elevation: 1,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+          side: BorderSide(
+            color: Colors.transparent, // Transparent border color
+            width: 2,
+          ),
+        ),
+        child: Obx(() => Text(
+              timer.isRunning.value ? 'Pause' : 'Start',
+              style: TextStyle(color: Colors.white, fontSize: 18),
+            )),
       ),
     ),
   );

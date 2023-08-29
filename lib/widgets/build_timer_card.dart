@@ -8,43 +8,53 @@ import 'package:flutter_countdown_timer/widgets/view_timer.dart';
 import '../main.dart';
 import '../modal/timeValue.dart';
 
-buildTimerCard(TimeValue timeValue, int index,
-    List<TextEditingController> textController) {
+Widget buildTimerCard(TimeValue timeValue, int index,
+    List<TextEditingController> textController, BuildContext context) {
   TextEditingController controller = textController[index];
 
   return Card(
-    color: const Color.fromARGB(255, 189, 212, 231),
-    elevation: 1,
-    child: ListTile(
-      title: Stack(
-          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    color: Color.fromARGB(
+        255, 162, 244, 244), // Change the card color to a light shade
+    elevation: 5, // Add a slight elevation to the card
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(12), // Rounded corners
+      side: BorderSide(color: Colors.blueGrey, width: 1), // Border
+    ),
+    child: Padding(
+      padding: const EdgeInsets.all(8.0), // Add some padding
+      child: ListTile(
+        title: Stack(
           children: [
             Positioned(
-              child: enterTimer(timeValue, controller),
+              //left: mq.width * .01,
+
+              child: enterTimer(timeValue, controller, timeValue.isRunning),
             ),
             Positioned(
-              left: mq.width * .25,
+              left: mq.width * .23,
               top: mq.height * .055,
               child: viewTimer(timeValue),
             ),
             Positioned(
-              left: mq.width * .6,
+              left: mq.width * .55,
               top: mq.height * .055,
               child: button(timeValue),
             ),
             Positioned(
-              left: mq.width * .7,
-              right: mq.width * .02,
+              left: mq.width * .6,
+              right: mq.width * .01,
               top: mq.height * .0,
-              child: removeTimer(index),
+              child: removeTimer(index, context),
             ),
             Positioned(
-              left: mq.width * .8,
-              right: mq.width * .001,
+              left: mq.width * .80,
+              right: mq.width * .01,
               top: mq.height * .0,
-              child: reset(timeValue),
-            )
-          ]),
+              child: reset(timeValue, context),
+            ),
+          ],
+        ),
+      ),
     ),
   );
 }

@@ -19,8 +19,10 @@ viewTimer(TimeValue timer) {
               child: Text(
                 timeController.formatDuration(
                     Duration(seconds: timer.currentSeconds.value)),
-                style:
-                    const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black87),
               ),
             )),
       ));
