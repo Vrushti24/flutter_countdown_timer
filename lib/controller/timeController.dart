@@ -15,6 +15,13 @@ class TimeController extends GetxController {
     timers.removeAt(index);
   }
 
+  void resetTimer(TimeValue timeValue) {
+    timeValue.currentSeconds.value = 0;
+    timeValue.initialSeconds = 0;
+    timeValue.isRunning.value = false;
+    timeValue.countdownTimer?.cancel();
+  }
+
   String formatDuration(Duration duration) {
     String twoDigits(int n) {
       if (n >= 10) return "$n";

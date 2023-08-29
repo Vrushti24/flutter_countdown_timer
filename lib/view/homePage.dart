@@ -106,10 +106,16 @@ class HomePage extends GetView<TimeController> {
                 child: _button(timeValue),
               ),
               Positioned(
-                left: mq.width * .8,
-                right: mq.width * .002,
+                left: mq.width * .7,
+                right: mq.width * .02,
                 top: mq.height * .0,
                 child: _removeTimer(index),
+              ),
+              Positioned(
+                left: mq.width * .8,
+                right: mq.width * .001,
+                top: mq.height * .0,
+                child: _reset(timeValue),
               )
             ]),
       ),
@@ -217,6 +223,17 @@ class HomePage extends GetView<TimeController> {
             timeController.removeTimer(index);
           },
           icon: Icon(Icons.delete)),
+    );
+  }
+
+  _reset(TimeValue timeValue) {
+    return Padding(
+      padding: EdgeInsets.only(top: mq.height * .01, left: mq.width * .00003),
+      child: IconButton(
+          onPressed: () {
+            timeController.resetTimer(timeValue);
+          },
+          icon: Icon(Icons.restore)),
     );
   }
 }
