@@ -7,14 +7,17 @@ import '../modal/timeValue.dart';
 class TimeController extends GetxController {
   RxList<TimeValue> timers = <TimeValue>[].obs;
 
+  //adding timer to display on screen(card)
   void addTimer(int seconds) {
     timers.add(TimeValue(id: timers.length, initialSeconds: seconds));
   }
 
+  //to delete the timer card
   void removeTimer(int index) {
     timers.removeAt(index);
   }
 
+  //to reset the timer card
   void resetTimer(TimeValue timeValue) {
     timeValue.currentSeconds.value = 0;
     timeValue.initialSeconds = 0;
@@ -22,6 +25,7 @@ class TimeController extends GetxController {
     timeValue.countdownTimer?.cancel();
   }
 
+  //formatting seconds to DD:HH:MM:SS
   String formatDuration(Duration duration) {
     String twoDigits(int n) {
       if (n >= 10) return "$n";
@@ -39,6 +43,7 @@ class TimeController extends GetxController {
     }
   }
 
+  //to start the timer
   void startCountdown(TimeValue timeValue) {
     timeValue.countdownTimer = Timer.periodic(const Duration(seconds: 1), (t) {
       if (!timeValue.isRunning.value) {
