@@ -8,6 +8,8 @@ import '../widgets/build_timer_card.dart';
 
 class HomePage extends GetView<TimeController> {
   HomePage({Key? key}) : super(key: key);
+
+  ///This allows you to easily access and use the TimeController
   final TimeController timeController = Get.put(TimeController());
   final List<TextEditingController> textController = [];
 
@@ -32,6 +34,7 @@ class HomePage extends GetView<TimeController> {
               () => ListView.builder(
                 itemCount: timeController.timers.length,
                 itemBuilder: ((context, index) {
+                  //to ensure that each item in a list has its own dedicated TextEditingController instance.
                   final textControllerList = textController.length > index
                       ? textController[index]
                       : TextEditingController();

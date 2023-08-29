@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:get/get.dart';
 
+//modal class
 class TimeValue {
   int id;
   int initialSeconds;

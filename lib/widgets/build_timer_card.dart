@@ -8,6 +8,7 @@ import 'package:flutter_countdown_timer/widgets/view_timer.dart';
 import '../main.dart';
 import '../modal/timeValue.dart';
 
+//card
 Widget buildTimerCard(TimeValue timeValue, int index,
     List<TextEditingController> textController, BuildContext context) {
   TextEditingController controller = textController[index];

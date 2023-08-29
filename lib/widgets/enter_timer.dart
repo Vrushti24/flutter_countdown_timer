@@ -6,7 +6,6 @@ import '../modal/timeValue.dart';
 
 enterTimer(TimeValue timeValue, TextEditingController textController,
     RxBool isTimerOn) {
-  //RxBool isTimerOn = timeValue.isRunning;
   return Container(
     width: mq.width * .22,
     height: mq.height * .19,
@@ -21,7 +20,6 @@ enterTimer(TimeValue timeValue, TextEditingController textController,
             onChanged: ((value) {
               int seconds = int.parse(value);
               timeValue.currentSeconds.value = seconds;
-              //controller.clear();
             }),
             decoration: InputDecoration(
                 focusedBorder: OutlineInputBorder(
@@ -36,6 +34,7 @@ enterTimer(TimeValue timeValue, TextEditingController textController,
                     borderRadius: BorderRadius.circular(10))),
             keyboardType: TextInputType.number,
             readOnly: isTimerOn.value,
+            style: TextStyle(color: Colors.black87, fontSize: 18),
           ),
         ],
       ),
