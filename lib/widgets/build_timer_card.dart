@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_countdown_timer/controller/timeController.dart';
 import 'package:flutter_countdown_timer/widgets/enter_timer.dart';
 import 'package:flutter_countdown_timer/widgets/play_timer.dart';
 import 'package:flutter_countdown_timer/widgets/remove_timer.dart';
 import 'package:flutter_countdown_timer/widgets/reset_timer.dart';
 import 'package:flutter_countdown_timer/widgets/view_timer.dart';
+import 'package:get/get.dart';
 
 import '../main.dart';
 import '../modal/timeValue.dart';
 
 //card
-Widget buildTimerCard(TimeValue timeValue, int index,
-    List<TextEditingController> textController, BuildContext context) {
-  TextEditingController controller = textController[index];
+Widget buildTimerCard(TimeValue timeValue, int index, BuildContext context) {
+  final TimeController timeController = Get.find<TimeController>();
+  TextEditingController controller = timeController.textController[index];
 
   return Card(
     color: Color.fromARGB(

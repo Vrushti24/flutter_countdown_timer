@@ -29,6 +29,7 @@ button(TimeValue timer) {
             timer.isRunning.value = true;
             timeController.startCountdown(timer);
           }
+          timer.isTimerOn.value = true;
         },
         color: Color(0xFF000515),
         elevation: 1,

@@ -39,10 +39,13 @@ class HomePage extends GetView<TimeController> {
                       ? textController[index]
                       : TextEditingController();
                   if (textController.length <= index) {
+                    textControllerList.text =
+                        timeController.timers[index].initialSeconds.toString();
+
                     textController.add(textControllerList);
                   }
-                  return buildTimerCard(timeController.timers[index], index,
-                      textController, context);
+                  return buildTimerCard(
+                      timeController.timers[index], index, context);
                 }),
               ),
             )),
@@ -127,7 +130,13 @@ class HomePage extends GetView<TimeController> {
                         },
                       );
                     },
-                    child: const Text('Add Timer'),
+                    child: const Text(
+                      'Add Timer',
+                      style: TextStyle(
+                          color: Colors.black87,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700),
+                    ),
                   ),
                 ),
               ),

@@ -12,6 +12,7 @@ reset(TimeValue timeValue, BuildContext context) {
   return IconButton(
       onPressed: () {
         timeController.resetTimer(timeValue);
+        timeValue.isRunning.value = false;
         ShowToast.showSnackBar(context, 'Timer reset Successful');
       },
       icon: const Icon(

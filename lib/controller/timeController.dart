@@ -1,19 +1,30 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../modal/timeValue.dart';
 
 class TimeController extends GetxController {
   RxList<TimeValue> timers = <TimeValue>[].obs;
+  List<TextEditingController> textController = [];
 
   //adding timer to display on screen(card)
   void addTimer(int seconds) {
-    timers.add(TimeValue(id: timers.length, initialSeconds: seconds));
+    final textControl = TextEditingController(text: seconds.toString());
+    textController.add(textControl);
+
+    timers.add(TimeValue(
+        id: timers.length,
+        initialSeconds: seconds,
+        isRunning: false.obs,
+        isTimerOn: false.obs));
   }
 
   //to delete the timer card
   void removeTimer(int index) {
+    textController[index].dispose();
+    textController.removeAt(index);
     timers.removeAt(index);
   }
 
@@ -22,6 +33,7 @@ class TimeController extends GetxController {
     timeValue.currentSeconds.value = 0;
     timeValue.initialSeconds = 0;
     timeValue.isRunning.value = false;
+    timeValue.initialEnteredValue.value = 0;
     timeValue.countdownTimer?.cancel();
   }
 
