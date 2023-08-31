@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../controller/timeController.dart';
 import '../main.dart';
 import '../modal/timeValue.dart';
 import 'edit_box.dart';
@@ -44,7 +42,7 @@ enterTimer(TimeValue timeValue, TextEditingController textController,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   labelText: 'sec',
-                  labelStyle: TextStyle(color: Colors.black87),
+                  labelStyle: const TextStyle(color: Colors.black87),
                   enabledBorder: OutlineInputBorder(
                     borderSide:
                         const BorderSide(width: 2.5, color: Colors.black87),
@@ -53,7 +51,7 @@ enterTimer(TimeValue timeValue, TextEditingController textController,
                 ),
                 keyboardType: TextInputType.number,
                 readOnly: isTimerRunning || !isEditingEnabled,
-                style: TextStyle(color: Colors.black87, fontSize: 18),
+                style: const TextStyle(color: Colors.black87, fontSize: 18),
               );
             } else if (timeValue.currentSeconds.value == 0) {
               textController.text = '';
@@ -72,7 +70,7 @@ enterTimer(TimeValue timeValue, TextEditingController textController,
                   child: Center(
                     child: Text(
                       '${timeValue.initialSeconds}',
-                      style: TextStyle(color: Colors.black26),
+                      style: const TextStyle(color: Colors.black26),
                     ),
                   ),
                 ),
